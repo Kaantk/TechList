@@ -1,0 +1,97 @@
+﻿@model TechList.Entities.Concrete.Inventory
+
+﻿@{
+	ViewData["Title"] = "Demirbaş Ekle";
+}
+
+<div class="w-full">
+	<div id="form-container" class="w-full">
+		<div id="form-box" class="shadow-lg">
+
+			@* Form Title *@
+			<div style="background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%)" class="py-3 rounded-top">
+				<div class="text-center">
+					<h5 class="text-white">Yeni Demirbaş Ekle</h5>
+					<span class="text-light md:fs-5" style="font-size: 12px">Sisteme yeni demirbaş kaydı oluşturun</span>
+				</div>
+			</div>
+
+			@* Form İcerik *@
+			<div class="bg-white rounded-bottom text-start p-3">
+				<form asp-controller="inventory" asp-action="Add">
+					<div>
+						<div class="border-start ps-3 border-3">
+							@* Temel Bilgiler *@
+							<div class="mb-2">
+								<h4 class="text-body fw-bold fs-5">Temel Bilgiler</h4>
+							</div>
+							<div class="row mb-2">
+								<div class="col-md-6 d-flex flex-column">
+									<label for="oldAssetNo">Eski Demirbaş Numarası</label>
+									<input type="number" asp-for="OldAssetNo" id="oldAssetNo" class="border rounded-2 px-2 py-1 my-1 shadow-sm" style="outline: none" />
+									<span class="text-danger" asp-validation-for="OldAssetNo"></span>
+								</div>
+								<div class="col-md-6 d-flex flex-column">
+									<label for="assetNo">Demirbaş Numarası *</label>
+									<input type="number" asp-for="AssetNo" id="assetNo" class="border rounded-2 px-2 py-1 my-1 shadow-sm" style="outline: none" />
+									<span class="text-danger" asp-validation-for="AssetNo"></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 d-flex flex-column">
+									<label for="assetName">Demirbaş İsmi *</label>
+									<input type="text" asp-for="AssetName" id="assetName" class="border rounded-2 px-2 py-1 my-1 shadow-sm" style="outline: none" />
+									<span class="text-danger" asp-validation-for="AssetName"></span>
+								</div>
+								<div class="col-md-6 d-flex flex-column">
+									<label for="serialNumber">Seri Numarası *</label>
+									<input type="text" asp-for="SerialNumber" id="serialNumber" class="border rounded-2 px-2 py-1 my-1 shadow-sm" style="outline: none" />
+									<span class="text-danger" asp-validation-for="SerialNumber"></span>
+								</div>
+							</div>
+						</div>
+						
+						@* Lokasyon Bilgileri *@
+						<div class="mt-4 border-start ps-3 border-3">
+							<div>
+								<h4 class="text-body fw-bold fs-5">Lokasyon Bilgileri</h4>
+							</div>
+							<div class="row mb-2">
+								<div class="col-12 col-xl-8 d-flex flex-column">
+									<label for="buildingName">Bina Adı *</label>
+									<input type="text" asp-for="BuildingName" id="buildingName" class="border rounded-2 px-2 py-1 my-1 shadow-sm" style="outline: none"/>
+									<span class="text-danger" asp-validation-for="BuildingName"></span>
+								</div>
+							</div>
+						</div>
+
+						@* Marka, Model ve Özellikleri *@
+						<div class="mt-4 border-start ps-3 border-3">
+							<div>
+								<h4 class="text-body fw-bold fs-5">Teknik Özellikleri</h4>
+							</div>
+							<div class="row mb-2">
+								<div class="col-12 d-flex flex-column">
+									<label for="brandModelSpecs">Marka, Model ve Özellikleri *</label> 
+									<textarea id="brandModelSpecs" asp-for="BrandModelSpecs" class="border rounded px-2 py-1 my-1 shadow-sm" style="outline: none; resize: none" cols="10" rows="3" size></textarea>
+									<span class="text-danger" asp-validation-for="BrandModelSpecs"></span>
+								</div>
+							</div>
+						</div>
+
+						@* Aksiyon Butonları *@
+						<div class="border-top mt-5 mb-2">
+							<div class="pt-4 d-flex justify-content-between">
+								<div class="border rounded py-1 px-3">
+									@Html.ActionLink("Geri Dön", "Index", "Inventory")
+								</div>
+								<button type="submit" style="border:none" class="bg-danger text-white rounded py-1 px-3 shadow-sm">Kaydet</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
